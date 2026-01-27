@@ -29,7 +29,3 @@ pre-commit run --all-files
 ```
 
 Note: `pre-commit` will also set up an isolated Node environment to run Prettier.
-
-## Layout
-
-- `scripts/`: runnable scripts

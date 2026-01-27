@@ -4,7 +4,10 @@ version = "0.0.0"
 description = "Metadata repo for Streamlit."
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "jsonschema>=4.25.1",
+    "requests>=2.32.0",
+]
 
 [dependency-groups]
 dev = ["pre-commit", "ruff"]
