@@ -1,0 +1,33 @@
+name: Validate Component Definitions
+
+on:
+  pull_request:
+    paths:
+      - "components/registry/components/**"
+      - "components/registry/schemas/**"
+      - "components/registry/scripts/**"
+      - "pyproject.toml"
+      - "uv.lock"
+      - ".github/workflows/validate-component-definitions.yml"
+
+jobs:
+  validate-submissions:
+    name: Validate Component Definitions
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v7
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: uv sync --locked --no-dev
+
+      - name: Validate Component Definitions
+        run: |
+          set -euo pipefail
+          uv run python components/registry/scripts/validate.py
