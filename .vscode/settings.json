@@ -1,0 +1,8 @@
+{
+  "json.schemas": [
+    {
+      "fileMatch": ["components/registry/components/*.json"],
+      "url": "./components/registry/schemas/component.schema.json"
+    }
+  ]
+}

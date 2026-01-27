@@ -1,6 +1,10 @@
 name: Run Refresh Pipeline
 
 on:
+  # TEMP: push trigger for testing on this branch (remove before merging).
+  push:
+    branches:
+      - 01-27-_feat_add_contributing_guidelines_for_the_registry
   schedule:
     # GitHub cron is evaluated in UTC. 03:00 UTC Monday == Sunday evening PT.
     - cron: "0 3 * * 1"
