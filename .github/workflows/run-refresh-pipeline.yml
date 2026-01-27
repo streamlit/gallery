@@ -1,0 +1,197 @@
+name: Run Refresh Pipeline
+
+on:
+  schedule:
+    # GitHub cron is evaluated in UTC. 03:00 UTC Monday == Sunday evening PT.
+    - cron: "0 3 * * 1"
+  workflow_dispatch:
+    inputs:
+      no_images:
+        description: Pass --no-images to the pipeline
+        type: boolean
+        required: false
+        default: false
+      allow_enrich_failures:
+        description: Pass --allow-enrich-failures to the pipeline
+        type: boolean
+        required: false
+        default: true
+      extra_args:
+        description: Extra args appended to run_pipeline.py (space-separated)
+        type: string
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: weekly-pipeline-refresh
+  cancel-in-progress: true
+
+jobs:
+  run-pipeline-and-open-pr:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 1
+          persist-credentials: true
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v7
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: uv sync --locked
+
+      - name: Run pipeline
+        id: pipeline
+        env:
+          # The pipeline scripts fall back to GITHUB_TOKEN for GitHub enrichment auth.
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NO_IMAGES: ${{ github.event.inputs.no_images || 'false' }}
+          ALLOW_ENRICH_FAILURES: ${{ github.event.inputs.allow_enrich_failures || 'true' }}
+          EXTRA_ARGS: ${{ github.event.inputs.extra_args || '' }}
+        run: |
+          set -euo pipefail
+
+          ARGS=()
+          if [[ "${NO_IMAGES}" == "true" ]]; then ARGS+=("--no-images"); fi
+          if [[ "${ALLOW_ENRICH_FAILURES}" == "true" ]]; then ARGS+=("--allow-enrich-failures"); fi
+          if [[ -n "${EXTRA_ARGS}" ]]; then
+            # EXTRA_ARGS is documented as space-separated.
+            read -r -a EXTRA_ARGS_ARRAY <<< "${EXTRA_ARGS}"
+            ARGS+=("${EXTRA_ARGS_ARRAY[@]}")
+          fi
+          echo "pipeline_args=${ARGS[*]}" >> "${GITHUB_OUTPUT}"
+
+          uv run python components/registry/scripts/run_pipeline.py --enrich-progress-every 10 "${ARGS[@]}"
+
+      - name: Detect changes (and run pre-commit if needed)
+        id: changes
+        run: |
+          set -euo pipefail
+
+          HAS_CHANGES_BEFORE="false"
+          if [[ -n "$(git status --porcelain)" ]]; then
+            HAS_CHANGES_BEFORE="true"
+          fi
+
+          if [[ "${HAS_CHANGES_BEFORE}" == "true" ]]; then
+            echo "Changes detected; running pre-commit on all files."
+            # Run twice: first pass may auto-fix and exit non-zero; second pass must be clean.
+            uv run pre-commit run --all-files || true
+            uv run pre-commit run --all-files
+          fi
+
+          if [[ -n "$(git status --porcelain)" ]]; then
+            echo "has_changes=true" >> "${GITHUB_OUTPUT}"
+          else
+            echo "has_changes=false" >> "${GITHUB_OUTPUT}"
+          fi
+
+          DATE_PT="$(TZ=America/Los_Angeles date +%Y-%m-%d)"
+          BRANCH="automation/weekly-pipeline-refresh-${DATE_PT}"
+          echo "date_pt=${DATE_PT}" >> "${GITHUB_OUTPUT}"
+          echo "branch=${BRANCH}" >> "${GITHUB_OUTPUT}"
+
+      - name: Create branch and commit
+        if: steps.changes.outputs.has_changes == 'true'
+        env:
+          BRANCH: ${{ steps.changes.outputs.branch }}
+        run: |
+          set -euo pipefail
+          git config user.name "Streamlit Bot"
+          git config user.email "core+streamlitbot-github@streamlit.io"
+
+          git checkout -B "${BRANCH}"
+          git add -A components/registry/
+          git commit -m "[chore] Weekly pipeline refresh"
+          git push --force-with-lease origin "${BRANCH}"
+
+      - name: Create or update PR
+        if: steps.changes.outputs.has_changes == 'true'
+        id: pr
+        uses: actions/github-script@v8
+        env:
+          BRANCH: ${{ steps.changes.outputs.branch }}
+          DATE_PT: ${{ steps.changes.outputs.date_pt }}
+          PIPELINE_ARGS: ${{ steps.pipeline.outputs.pipeline_args }}
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const owner = context.repo.owner;
+            const repo = context.repo.repo;
+            const branch = process.env.BRANCH;
+            const datePt = process.env.DATE_PT;
+            const pipelineArgs = (process.env.PIPELINE_ARGS || "").trim();
+
+            const { data: repoInfo } = await github.rest.repos.get({ owner, repo });
+            const base = repoInfo.default_branch;
+            const head = `${owner}:${branch}`;
+
+            const title = `chore: weekly pipeline refresh (${datePt})`;
+            const bodyLines = [
+              "Automated weekly refresh of the component gallery pipeline outputs.",
+              "",
+              `Command: \`uv run python components/registry/scripts/run_pipeline.py --enrich-progress-every 10${pipelineArgs ? " " + pipelineArgs : ""}\``,
+              "",
+              "This PR was created by a scheduled GitHub Actions workflow.",
+            ];
+            const body = bodyLines.join("\n");
+
+            const existing = await github.rest.pulls.list({
+              owner,
+              repo,
+              head,
+              state: "open",
+            });
+
+            let pr;
+            if (existing.data.length > 0) {
+              pr = existing.data[0];
+              await github.rest.pulls.update({
+                owner,
+                repo,
+                pull_number: pr.number,
+                title,
+                body,
+              });
+            } else {
+              const created = await github.rest.pulls.create({
+                owner,
+                repo,
+                title,
+                head: branch,
+                base,
+                body,
+                draft: false,
+              });
+              pr = created.data;
+            }
+
+            core.setOutput("pr_url", pr.html_url);
+            core.setOutput("pr_number", String(pr.number));
+
+      - name: Summary
+        env:
+          HAS_CHANGES: ${{ steps.changes.outputs.has_changes }}
+          BRANCH: ${{ steps.changes.outputs.branch }}
+          PR_URL: ${{ steps.pr.outputs.pr_url }}
+        run: |
+          {
+            echo "## Weekly pipeline refresh";
+            echo "- has changes: ${HAS_CHANGES}";
+            echo "- branch: ${BRANCH}";
+            if [ "${HAS_CHANGES}" = "true" ]; then
+              echo "- PR: ${PR_URL:-n/a}";
+            else
+              echo "- PR: n/a (no changes detected)";
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"

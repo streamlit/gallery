@@ -28,3 +28,10 @@ repos:
         additional_dependencies: ["prettier@3.8.1"]
         entry: prettier --write
         files: "\\.json$"
+
+      - id: prettier-yaml
+        name: prettier (yaml)
+        language: node
+        additional_dependencies: ["prettier@3.8.1"]
+        entry: prettier --write
+        files: "\\.(ya?ml)$"
