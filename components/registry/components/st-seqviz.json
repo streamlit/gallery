@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "title": "SeqViz",
+  "author": {
+    "github": "ghilesmeddour",
+    "displayName": "Ghiles Meddour"
+  },
+  "links": {
+    "github": "https://github.com/ghilesmeddour/st-seqviz",
+    "pypi": "st-seqviz",
+    "demo": "https://seqviz.streamlit.app/",
+    "docs": "https://github.com/ghilesmeddour/st-seqviz?tab=readme-ov-file#api-reference"
+  },
+  "media": {
+    "image": "https://raw.githubusercontent.com/ghilesmeddour/st-seqviz/14fee014045cf43e9025007205c48144535d0381/res/streamlit-seqviz-demo.gif"
+  },
+  "install": {
+    "pip": "pip install st-seqviz"
+  },
+  "governance": {
+    "enabled": true,
+    "notes": null
+  },
+  "categories": ["Molecules & genes"]
+}
