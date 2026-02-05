@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "title": "st_yled",
+  "author": {
+    "github": "JonathanAlles",
+    "displayName": "JonathanAlles"
+  },
+  "links": {
+    "github": "https://github.com/EvobyteDigitalBiology/st-styled",
+    "pypi": "st-styled",
+    "demo": "https://styled-studio.streamlit.app/",
+    "docs": "https://st-styled.evo-byte.com/"
+  },
+  "media": {
+    "image": "https://evo-byte.com/wp-content/uploads/2026/02/st-styled-gallery-screen.webp"
+  },
+  "install": {
+    "pip": "pip install st-styled"
+  },
+  "governance": {
+    "enabled": true,
+    "notes": null
+  },
+  "categories": ["Widgets", "Text", "Page navigation", "Developer tools"]
+}
