@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "title": "streamlit-carousel-uui",
+  "author": {
+    "github": "janduplessis883",
+    "displayName": "Jan du Plessis"
+  },
+  "links": {
+    "github": "https://github.com/janduplessis883/streamlit_carousel_uui",
+    "pypi": "streamlit-carousel-uui",
+    "demo": "https://demo-streamlet-carousel-uii.streamlit.app",
+    "docs": null
+  },
+  "media": {
+    "image": "https://github.com/janduplessis883/demo-streamlit-carousel-uii/blob/master/images/demo_carousel.png?raw=true"
+  },
+  "install": {
+    "pip": "pip install streamlit-carousel-uui"
+  },
+  "governance": {
+    "enabled": true,
+    "notes": null
+  },
+  "categories": ["Images & video"]
+}

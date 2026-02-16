@@ -12,7 +12,7 @@
     "docs": null
   },
   "media": {
-    "image": "https://github.com/mchl-schrdng/st_coinmarketcap_connection/blob/main/img/app.png?raw=true"
+    "image": null
   },
   "install": {
     "pip": "pip install coinmarketcap-connection"
