@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "title": "Video Annotator",
+  "author": {
+    "github": "Mikaelnystroms",
+    "displayName": "Mikael Nystrom"
+  },
+  "links": {
+    "github": "https://github.com/Mikaelnystroms/video_annotator",
+    "pypi": "streamlit-video-annotator",
+    "demo": null,
+    "docs": null
+  },
+  "media": {
+    "image": null
+  },
+  "install": {
+    "pip": "pip install streamlit-video-annotator"
+  },
+  "governance": {
+    "enabled": true,
+    "notes": null
+  },
+  "categories": ["Images & video"]
+}
