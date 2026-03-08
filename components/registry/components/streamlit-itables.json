@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "title": "ITables: Python DataFrames as Interactive DataTables",
+  "author": {
+    "github": "mwouts",
+    "displayName": "Marc Wouts"
+  },
+  "links": {
+    "github": "https://github.com/mwouts/itables",
+    "pypi": "itables",
+    "demo": "https://itables.streamlit.app",
+    "docs": "https://mwouts.github.io/itables"
+  },
+  "media": {
+    "image": "https://raw.githubusercontent.com/mwouts/itables/main/src/itables/logo/wide.svg"
+  },
+  "install": {
+    "pip": "pip install itables"
+  },
+  "governance": {
+    "enabled": true,
+    "notes": null
+  },
+  "categories": ["Dataframes", "Widgets"]
+}
