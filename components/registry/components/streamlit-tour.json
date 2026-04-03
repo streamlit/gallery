@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "title": "Streamlit Tour",
+  "author": {
+    "github": "mp-mech-ai",
+    "displayName": "Malo"
+  },
+  "links": {
+    "github": "https://github.com/mp-mech-ai/streamlit_tour",
+    "pypi": "streamlit-tour",
+    "demo": null,
+    "docs": null
+  },
+  "media": {
+    "image": "https://github.com/mp-mech-ai/streamlit_tour/raw/master/assets/streamlit-tour-demo.gif"
+  },
+  "install": {
+    "pip": "pip install streamlit-tour"
+  },
+  "governance": {
+    "enabled": true,
+    "notes": null
+  },
+  "categories": ["Developper tools", "Page navigation"]
+}
