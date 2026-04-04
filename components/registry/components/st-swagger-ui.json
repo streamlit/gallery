@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "title": "Streamlit Swagger UI",
+  "author": {
+    "github": "quxw.work",
+    "displayName": "quxiaowei"
+  },
+  "links": {
+    "github": "https://github.com/quxiaowei/st-swagger-ui",
+    "pypi": "st_swagger_ui",
+    "demo": "https://st-swagger-ui-example-4wkdappmrafyrfwctdpfnfa.streamlit.app/",
+    "docs": "https://github.com/quxiaowei/st-swagger-ui/blob/master/README.md"
+  },
+  "media": {
+    "image": null
+  },
+  "install": {
+    "pip": "pip install st_swagger_ui"
+  },
+  "governance": {
+    "enabled": true,
+    "notes": null
+  },
+  "categories": ["Widgets"]
+}
