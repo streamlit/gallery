@@ -7,7 +7,7 @@
   },
   "links": {
     "github": "https://github.com/cfasana/streamlit-nlp-annotator",
-    "pypi": "https://pypi.org/project/streamlit-nlp-annotator/",
+    "pypi": "streamlit-nlp-annotator",
     "demo": "https://nlp-annotator.streamlit.app/",
     "docs": null
   },
