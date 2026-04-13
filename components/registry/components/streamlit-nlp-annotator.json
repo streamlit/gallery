@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "title": "Streamlit NLP Annotator",
+  "author": {
+    "github": "cfasana",
+    "displayName": "cfasana"
+  },
+  "links": {
+    "github": "https://github.com/cfasana/streamlit-nlp-annotator",
+    "pypi": "https://pypi.org/project/streamlit-nlp-annotator/",
+    "demo": "https://nlp-annotator.streamlit.app/",
+    "docs": null
+  },
+  "media": {
+    "image": "https://github.com/cfasana/streamlit-nlp-annotator/blob/33165cadab168f377cada82f284505b0df8c4b61/assets/image.png"
+  },
+  "install": {
+    "pip": "pip install streamlit-nlp-annotator"
+  },
+  "governance": {
+    "enabled": true,
+    "notes": null
+  },
+  "categories": ["Widgets", "Text"]
+}
