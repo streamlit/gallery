@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "title": "Streamlit Pivot Table",
+  "author": {
+    "github": "streamlit",
+    "displayName": "Snowflake Inc"
+  },
+  "links": {
+    "github": "https://github.com/streamlit/streamlit-pivot-table",
+    "pypi": "streamlit-pivot",
+    "demo": "https://custom-component-pivot-table.streamlit.app/",
+    "docs": "https://github.com/streamlit/streamlit-pivot-table#readme"
+  },
+  "media": {
+    "image": "https://raw.githubusercontent.com/streamlit/streamlit-pivot-table/main/docs/preview.png"
+  },
+  "install": {
+    "pip": "pip install streamlit-pivot"
+  },
+  "governance": {
+    "enabled": true,
+    "notes": null
+  },
+  "categories": ["Dataframes", "Widgets"]
+}
