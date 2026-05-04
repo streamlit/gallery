@@ -31,3 +31,28 @@ jobs:
         run: |
           set -euo pipefail
           uv run python components/registry/scripts/validate.py
+
+      - name: Fetch base branch
+        run: git fetch --no-tags --depth=1 origin "${{ github.base_ref }}"
+
+      - name: Validate Changed Component Images
+        run: |
+          set -euo pipefail
+
+          mapfile -t files < <(
+            git diff --name-only --diff-filter=ACMR "origin/${{ github.base_ref }}"...HEAD -- "components/registry/components/*.json"
+          )
+
+          if (( ${#files[@]} == 0 )); then
+            echo "No changed component definition files to image-check."
+            exit 0
+          fi
+
+          tmpdir="$(mktemp -d)"
+          trap 'rm -rf "${tmpdir}"' EXIT
+
+          for file in "${files[@]}"; do
+            cp "${file}" "${tmpdir}/"
+          done
+
+          uv run python components/registry/scripts/enrich_images.py --check-only --components-dir "${tmpdir}"
