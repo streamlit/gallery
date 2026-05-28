@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "title": "OrcaRouter Connection",
+  "author": {
+    "github": "zhenjunchen-png",
+    "displayName": "OrcaRouter"
+  },
+  "links": {
+    "github": "https://github.com/Continuum-AI-Corp/streamlit-orcarouter",
+    "pypi": "st-orcarouter",
+    "demo": null,
+    "docs": null
+  },
+  "media": {
+    "image": null
+  },
+  "install": {
+    "pip": "pip install st-orcarouter"
+  },
+  "governance": {
+    "enabled": true,
+    "notes": null
+  },
+  "categories": ["LLMs"]
+}
