@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "title": "Persist Session",
+  "author": {
+    "github": "hrkn"
+  },
+  "links": {
+    "github": "https://github.com/hrkn/streamlit-persist-session",
+    "pypi": "streamlit-persist-session",
+    "demo": null,
+    "docs": null
+  },
+  "media": {
+    "image": null
+  },
+  "install": {
+    "pip": "pip install streamlit-persist-session"
+  },
+  "governance": {
+    "enabled": true,
+    "notes": null
+  },
+  "categories": ["Developer tools"]
+}
