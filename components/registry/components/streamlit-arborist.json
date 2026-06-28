@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "title": "Streamlit Arborist",
+  "author": {
+    "github": "gabriel-msilva",
+    "displayName": "Gabriel Mello Silva"
+  },
+  "links": {
+    "github": "https://github.com/gabriel-msilva/streamlit-arborist",
+    "pypi": "streamlit-arborist",
+    "demo": "https://st-arborist-example.streamlit.app",
+    "docs": "https://streamlit-arborist.readthedocs.io"
+  },
+  "media": {
+    "image": "https://raw.githubusercontent.com/gabriel-msilva/streamlit-arborist/f1e0cdfc78ab4f4cfce90f874c2712f62fe55416/docs/_static/preview.png"
+  },
+  "install": {
+    "pip": "pip install streamlit-arborist"
+  },
+  "governance": {
+    "enabled": true,
+    "notes": null
+  },
+  "categories": ["Widgets"]
+}
