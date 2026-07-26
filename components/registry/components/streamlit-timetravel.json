@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "title": "streamlit-timetravel",
+  "author": {
+    "github": "smahable",
+    "displayName": "sm2022"
+  },
+  "links": {
+    "github": "https://github.com/smahable/streamlit-timetravel",
+    "pypi": "https://pypi.org/project/streamlit-timetravel/",
+    "demo": "https://github.com/smahable/streamlit-timetravel",
+    "docs": "https://github.com/smahable/streamlit-timetravel"
+  },
+  "media": {
+    "image": null
+  },
+  "install": {
+    "pip": "pip install streamlit-timetravel"
+  },
+  "governance": {
+    "enabled": true,
+    "notes": null
+  },
+  "categories": ["Developer Tools"]
+}
