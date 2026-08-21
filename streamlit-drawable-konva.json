@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "title": "Drawable Konva",
+  "author": {
+    "github": "gsiogkas",
+    "displayName": "George Siogkas"
+  },
+  "links": {
+    "github": "https://github.com/gsiogkas/streamlit-drawable-konva",
+    "pypi": "streamlit-drawable-konva",
+    "demo": "https://drawable-konva-demo.streamlit.app",
+    "docs": "https://github.com/gsiogkas/streamlit-drawable-konva#readme"
+  },
+  "media": {
+    "image": "https://raw.githubusercontent.com/gsiogkas/streamlit-drawable-konva/main/docs/assets/usage.gif"
+  },
+  "install": {
+    "pip": "pip install streamlit-drawable-konva"
+  },
+  "governance": {
+    "enabled": true,
+    "notes": null
+  },
+  "categories": ["Images & video", "Widgets"]
+}
