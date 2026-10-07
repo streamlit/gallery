@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "title": "Listview",
+  "author": {
+    "github": "LelandGrunt",
+    "displayName": "Leland Grunt"
+  },
+  "links": {
+    "github": "https://github.com/LelandGrunt/streamlit-listview",
+    "pypi": "streamlit-listview",
+    "demo": "https://st-listview-demo.streamlit.app",
+    "docs": "https://github.com/LelandGrunt/streamlit-listview/blob/main/README.md"
+  },
+  "media": {
+    "image": "https://raw.githubusercontent.com/LelandGrunt/streamlit-listview/HEAD/assets/listview-demo.gif"
+  },
+  "install": {
+    "pip": "pip install streamlit-listview"
+  },
+  "governance": {
+    "enabled": true,
+    "notes": null
+  },
+  "categories": ["Widgets"]
+}
