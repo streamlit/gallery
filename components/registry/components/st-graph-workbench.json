@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "title": "st-graph-workbench",
+  "author": {
+    "github": "ayhaidar",
+    "displayName": "Ali Haidar"
+  },
+  "links": {
+    "github": "https://github.com/ayhaidar/st-graph-workbench",
+    "pypi": "st-graph-workbench",
+    "demo": "https://st-graph-workbench.streamlit.app/",
+    "docs": "https://ayhaidar.github.io/st-graph-workbench/"
+  },
+  "media": {
+    "image": "https://raw.githubusercontent.com/ayhaidar/st-graph-workbench/main/docs/assets/screenshots/workflow-analysis.png"
+  },
+  "install": {
+    "pip": "pip install st-graph-workbench"
+  },
+  "governance": {
+    "enabled": true,
+    "notes": null
+  },
+  "categories": [
+    "Graphs",
+    "Charts"
+  ]
+}
