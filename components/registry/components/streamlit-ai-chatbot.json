@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "title": "Asyntai AI Chatbot",
+  "author": {
+    "github": "asyntai",
+    "displayName": "Asyntai"
+  },
+  "links": {
+    "github": "https://github.com/asyntai/streamlit-ai-chatbot",
+    "pypi": "streamlit-ai-chatbot",
+    "demo": null,
+    "docs": "https://asyntai.com/documentation/integrations/streamlit/"
+  },
+  "media": {
+    "image": null
+  },
+  "install": {
+    "pip": "pip install streamlit-ai-chatbot"
+  },
+  "governance": {
+    "enabled": true,
+    "notes": null
+  },
+  "categories": ["LLMs", "Widgets"]
+}
