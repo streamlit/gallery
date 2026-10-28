@@ -21,8 +21,5 @@
     "enabled": true,
     "notes": null
   },
-  "categories": [
-    "Graphs",
-    "Charts"
-  ]
+  "categories": ["Graphs", "Charts"]
 }
