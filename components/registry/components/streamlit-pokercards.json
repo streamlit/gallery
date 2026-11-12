@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "title": "Streamlit Pokercards",
+  "author": {
+    "github": "cwilharm",
+    "displayName": null
+  },
+  "links": {
+    "github": "https://github.com/cwilharm/streamlit-pokercards",
+    "pypi": null,
+    "demo": null,
+    "docs": null
+  },
+  "media": {
+    "image": "https://raw.githubusercontent.com/cwilharm/streamlit-pokercards/main/docs/cards.png"
+  },
+  "install": {
+    "pip": "pip install streamlit-pokercards"
+  },
+  "governance": {
+    "enabled": true,
+    "notes": null
+  },
+  "categories": ["Widgets"]
+}
