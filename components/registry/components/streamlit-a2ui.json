@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "title": "A2UI Surface",
+  "author": {
+    "github": "josechudev",
+    "displayName": "josechudev"
+  },
+  "links": {
+    "github": "https://github.com/josechudev/streamlit-a2ui",
+    "pypi": "streamlit-a2ui",
+    "demo": null,
+    "docs": "https://github.com/josechudev/streamlit-a2ui#readme"
+  },
+  "media": {
+    "image": "https://raw.githubusercontent.com/josechudev/streamlit-a2ui/master/docs/images/basic-example.gif"
+  },
+  "install": {
+    "pip": "pip install streamlit-a2ui"
+  },
+  "governance": {
+    "enabled": true,
+    "notes": null
+  },
+  "categories": ["LLMs", "Integrations"]
+}
